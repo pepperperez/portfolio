@@ -3,15 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./style.css" type="text/css" rel="stylesheet">
     <title>Yael Perez</title>
 </head>
 <body>
-    <header></header>
+    <header>
+        <nav class="banner">
+            <h1 class="name">Yael Perez</h1>
+            <ul>
+                <li><a href="#about-me">About Me</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
     <main>
-        <div class="about"></div>
-        <div class="project"></div>
-        <div class="skills"></div>
+        <section id="about-me">
+            <div class="about-me-container">
+                <div class="bio">
+                    <h2>About Me</h2>
+                    <p>Originally from Israel, I relocated to Seattle in 2017.</p>
+                    <p>I am a firm believer in making knowledge available to everyone, so I feel that good documentation and good user experience go hand in hand.</p>
+                    <p>I am interested in being able to document both consumer and developer-facing topics as well as help create and maintain convenient and friendly interfaces.</p>
+                    <p>My skills include more than 7 years of experience in technical documentation as well as front end development capabilities, including HTML, CSS, and JavaScript.</p>
+                </div>
+                <img src="./images/profile.png" alt="Headshot" class="profile">
+            </div>
+        </section>
+        <section id="projects">
+            <h2>Projects</h2>
+            <!--documentation-->
+            <div class="project-container">
+                <details class="project">
+                    <summary class="project-title">
+                        <h3>Single Sign-On</h3>
+                    </summary>
+                    <div class="project-description">
+                        <p class="disclaimer">
+                            Written in 2016, when working for Quali, as part of the online help for Quali's flagship product. Since this version of the product as well as its documentation are no longer in use, the page was reconstructed from an archived version of the company's online help.</br> All rights belong to Quali ©2016.
+                        </p>
+                        <p>
+                            This document was previously a sub-topic relating to config key setup, and as the method and the tools for configuring the single-sign-on changed, the document became its own topic.
+                        </p>
+                        <p class="learn-more"><a href="#">Learn more</a></p>
+                    </div>
+                </details>
+            </div>
+            <div class="project-container">
+                <details class="project">
+                    <summary class="project-title">
+                        <h3>Soap vs. Rest</h3>
+                    </summary>
+                    <p class="project-description">
+                        Project description
+                    </p>
+                    <p class="learn-more"><a href="#">Learn more</a></p>
+                </details>
+            </div>
+            <div class="project-container">
+                <details class="project">
+                    <summary class="project-title">
+                        <h3>Tic-Tac-Toe</h3>
+                    </summary>
+                    <p class="project-description">
+                        Project description
+                    </p>
+                    <p class="learn-more"><a href="#">Learn more</a></p>
+                </details>
+            </div>
+            <!--dev-->
+            <div class="project-container">
+                <details class="project">
+                    <summary class="project-title">
+                        <h3>Not Your Bubbie's Kitchen</h3>
+                    </summary>
+                    <p class="project-description">
+                        I created this website as part of a Codecademy challenge project to create a website for a fictional business using CSS Flexbox. The project is deployed on GitHub Pages and includes images from Upsplash.
+                    </p>
+                    <p class="learn-more"><a href="https://pepperperez.github.io/bubbie.github.io/">Learn more</a></p>
+            </details>
+            </div>
+            <div class="project-container">
+                <details class="project">
+                    <summary class="project-title">
+                        <h3>Just Desserts</h3>
+                    </summary>
+                    <p class="project-description">
+                        Realizing a beloved neighbourhood business had an outdated website, I was inspired as a personal project to create a new website as proof of concept, should I ever decide to offer it to them. </p>
+                    <p>
+                        The name is changed and the images are taken from Upsplash, to avoid confusion with the real business' website.
+                    </p>
+                    <p class="learn-more"><a href="#">Learn more</a></p>
+                </details>
+        </div>
+        </section>
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skill-container">
+                <div class="skill">
+                    <img src="./images/icon-flare.svg" class="skill-icon" alt="MadCap Flare icon" />
+                </div>
+                <div class="skill">
+                    <img src="./images/HTML5_Badge.svg" class="skill-icon" alt="HTML5 icon"/>
+                </div>
+                <div class="skill">
+                    <img src="./images/CSS3.svg" class="skill-icon" alt="CSS icon"/>
+                </div>
+                <div class="skill">
+                    <img src="./images/JavaScript_logo_2.svg" class="skill-icon" alt="JavaScript logo"/>
+                </div>
+                <div class="skill">
+                    <img src="./images/Bootstrap_logo.svg" class="skill-icon" alt="Bootstrap logo"/>
+                </div>
+                <div class="skill">
+                    <img src="./images/Git_icon.svg" class="skill-icon" alt="Git icon"/>
+                </div>
+                <div class="skill">
+                    <img src="./images/Octicons-mark-github.svg" class="skill-icon" alt="GitHub icon"/>
+                </div>
+                <div class="skill">
+                    <img src="" class="skill-icon" alt=""/>
+                </div>
+            </div>
+        </section>
     </main>
-    <footer></footer>
+    <footer>Created by Yael Perez 2021, for personal purposes only.</footer>
 </body>
 </html>
