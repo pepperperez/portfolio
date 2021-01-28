@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./style.css" type="text/css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <title>Yael Perez</title>
 </head>
 <body>
     <header>
         <nav class="banner">
             <h1 class="name">Yael Perez</h1>
-            <ul>
+            <ul class="navigation">
                 <li><a href="#about-me">About Me</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
@@ -34,69 +37,80 @@
         <section id="projects">
             <h2>Projects</h2>
             <!--documentation-->
-            <div class="project-container">
-                <details class="project">
-                    <summary class="project-title">
-                        <h3>Single Sign-On</h3>
-                    </summary>
-                    <div class="project-description">
-                        <p class="disclaimer">
-                            Written in 2016, when working for Quali, as part of the online help for Quali's flagship product. Since this version of the product as well as its documentation are no longer in use, the page was reconstructed from an archived version of the company's online help.</br> All rights belong to Quali ©2016.
-                        </p>
-                        <p>
-                            This document was previously a sub-topic relating to config key setup, and as the method and the tools for configuring the single-sign-on changed, the document became its own topic.
-                        </p>
-                        <p class="learn-more"><a href="#">Learn more</a></p>
-                    </div>
+            <div class="proyektim">
+                <div class="project-container sso">
+                    <details class="project">
+                        <summary class="project-title">
+                            <h3>Single Sign-On</h3>
+                        </summary>
+                        <div class="project-description">
+                            <p class="disclaimer">
+                                Written in 2016, when working for Quali, as part of the online help for Quali's flagship product. Since this version of the product as well as its documentation are no longer in use, the page was reconstructed from an archived version of the company's online help.</br> All rights belong to Quali ©2016.
+                            </p>
+                            <p>
+                                This document was previously a sub-topic relating to config key setup, and as the method and the tools for configuring the single-sign-on changed, the document became its own topic.
+                            </p>
+                        </div>
+                        <button class="learn-more"><a href="#">Learn more</a></button>
+                    </details>
+                </div>
+                <div class="project-container svr">
+                    <details class="project">
+                        <summary class="project-title">
+                            <h3>SOAP vs. REST</h3>
+                        </summary>
+                        <div class="project-description">
+                            <p >
+                                Project description
+                            </p>
+                        </div>
+                        <button class="learn-more"><a href="#">Learn more</a></button>
+                        
+                    </details>
+                </div>
+                <div class="project-container tictac">
+                    <details class="project">
+                        <summary class="project-title">
+                            <h3>Tic-Tac-Toe</h3>
+                        </summary>
+                        <div class="project-description">
+                            <p>
+                                Project description
+                            </p>
+                        </div>
+                        <button class="learn-more"><a href="#">Learn more</a></button>
+                    </details>
+                </div>
+                <!--dev-->
+                <div class="project-container bubbie">
+                    <details class="project">
+                        <summary class="project-title">
+                            <h3>Not Your Bubbie's Kitchen</h3>
+                        </summary>
+                        <div class="project-description">
+                            <p>
+                                I created this website as part of a Codecademy challenge project to create a website for a fictional business using CSS Flexbox. The project is deployed on GitHub Pages and includes images from Upsplash.
+                            </p>
+                        </div>
+                        <button class="learn-more"><a href="https://pepperperez.github.io/bubbie.github.io/">Learn more</a></button>
                 </details>
+                </div>
+                <div class="project-container">
+                    <details class="project">
+                        <summary class="project-title">
+                            <h3>Just Desserts</h3>
+                        </summary>
+                        <div class="project-description">
+                            <p>
+                                Realizing a beloved neighbourhood business had an outdated website, I was inspired as a personal project to create a new website as proof of concept, should I ever decide to offer it to them. </p>
+                            <p>
+                                The name is changed and the images are taken from Upsplash, to avoid confusion with the real business' website.
+                            </p>
+                        </div>
+                        <button class="learn-more"><a href="#">Learn more</a></button>
+                    </details>
+                </div>
             </div>
-            <div class="project-container">
-                <details class="project">
-                    <summary class="project-title">
-                        <h3>Soap vs. Rest</h3>
-                    </summary>
-                    <p class="project-description">
-                        Project description
-                    </p>
-                    <p class="learn-more"><a href="#">Learn more</a></p>
-                </details>
-            </div>
-            <div class="project-container">
-                <details class="project">
-                    <summary class="project-title">
-                        <h3>Tic-Tac-Toe</h3>
-                    </summary>
-                    <p class="project-description">
-                        Project description
-                    </p>
-                    <p class="learn-more"><a href="#">Learn more</a></p>
-                </details>
-            </div>
-            <!--dev-->
-            <div class="project-container">
-                <details class="project">
-                    <summary class="project-title">
-                        <h3>Not Your Bubbie's Kitchen</h3>
-                    </summary>
-                    <p class="project-description">
-                        I created this website as part of a Codecademy challenge project to create a website for a fictional business using CSS Flexbox. The project is deployed on GitHub Pages and includes images from Upsplash.
-                    </p>
-                    <p class="learn-more"><a href="https://pepperperez.github.io/bubbie.github.io/">Learn more</a></p>
-            </details>
-            </div>
-            <div class="project-container">
-                <details class="project">
-                    <summary class="project-title">
-                        <h3>Just Desserts</h3>
-                    </summary>
-                    <p class="project-description">
-                        Realizing a beloved neighbourhood business had an outdated website, I was inspired as a personal project to create a new website as proof of concept, should I ever decide to offer it to them. </p>
-                    <p>
-                        The name is changed and the images are taken from Upsplash, to avoid confusion with the real business' website.
-                    </p>
-                    <p class="learn-more"><a href="#">Learn more</a></p>
-                </details>
-        </div>
         </section>
         <section id="skills">
             <h2>Skills</h2>
@@ -104,7 +118,7 @@
                 <div class="skill">
                     <img src="./images/icon-flare.svg" class="skill-icon" alt="MadCap Flare icon" />
                 </div>
-                <div class="skill">
+                <div class="skill-2">
                     <img src="./images/HTML5_Badge.svg" class="skill-icon" alt="HTML5 icon"/>
                 </div>
                 <div class="skill">

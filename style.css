@@ -1,5 +1,168 @@
+/* Global rules */
+
 html {
-    max-width: 100vw;
-    max-height: 100vh;
-    font-size: 16px;
+    height: 100%;
+    
+}
+
+body {
+    /*max-width: 80%;*/
+    height: 100%;
+    /*margin-left: 10%;*/
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+}
+
+h1, h2, h3, li a {
+    font-family: 'Fraunces', serif;
+}
+
+h1 {
+    font-size: 2.25rem;
+    color: white;
+    /*padding-left: 20px;*/
+    text-shadow: slategray;
+}
+
+
+
+/*Page header*/
+
+header {
+    background: linear-gradient(45deg, #4b6cb7 0%, #182848 100%);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between; 
+}
+
+.navigation {
+    display:flex;
+    justify-self: stretch;
+}
+
+.navigation li {
+    display: inline-block;
+    padding: 0 20px;
+    align-self: center;
+}
+
+.navigation li a {
+    text-decoration: none;
+    font-size: larger;
+    font-weight: bold;
+    color: whitesmoke;
+}
+
+.navigation a:visited {
+    text-decoration: none;
+    color:  whitesmoke;
+}
+
+nav,
+main {
+    padding: 0px 50px;
+}
+
+/* Main Content*/
+/*About*/
+.about-me-container {
+    display:flex;
+    justify-content: space-between;
+}
+
+.bio {
+    max-width: 35rem;
+}
+
+.profile {
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 15px;
+    align-self: center;
+    padding: 30px;
+}
+
+/*Projcts*/
+.proyektim {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+details {
+    padding: 20px;
+    margin: 10px;
+}
+
+/*.sso {
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf22YkO648SsvBYQXaxR3wCE6NFa7FPsbafA&usqp=CAU);
+    background-repeat: no-repeat;
+    background-position: center;   
+}*/
+
+/*.svr {
+    background-image: url(https://stackify.com/wp-content/uploads/2017/03/SOAP-v-REST_1024x512-1280x720.jpg);
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}*/
+
+/*.tictac {
+    background-image: url(https://ak.picdn.net/shutterstock/videos/9515309/thumb/10.jpg);
+    background-position: center;
+}*/
+
+/*.bubbie {
+    background-image: url(https://res.cloudinary.com/hksqkdlah/image/upload/w_1200,h_630,c_fill/CIO%20Web%20Articles/CI%20MJ%2019/Challah/STP_Challah_0711.jpg);
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}*/
+
+.project-container {
+    /*height:300px;
+    width: 300px;*/
+    margin: 20px;
+    border: aliceblue 1px solid;
+    border-radius: 15px;
+    background: linear-gradient(45deg, #4b6cb7 0%, #182848 100%);
+    
+}
+
+.project-title h3 {
+    display: inline;
+    cursor:pointer;
+    color: whitesmoke;
+}
+
+.project-description {
+    background-color:hsla(199, 100%, 93%, 75%);
+    padding: 1px 10px;
+    margin-top: 10px;
+    border-radius: 15px;
+}
+
+/*Skills*/
+.skill-container {
+    display: grid;
+    grid-template-columns: repeat(10, 75px);
+}
+
+.skill-icon {
+    width: 50px;
+}
+
+section {
+    margin-bottom: 50px;
+}
+
+/*Footer*/
+footer {
+    margin-top: auto;
+    padding: 1rem 5px;
+    text-align: center;
 }
