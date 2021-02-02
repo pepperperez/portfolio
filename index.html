@@ -7,6 +7,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!--import font-awsome for hamburger menu-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <title>Yael Perez</title>
 </head>
@@ -14,12 +16,23 @@
     <header>
         <nav class="banner">
             <h1 class="name">Yael Perez</h1>
-            <ul class="navigation">
+            <!--<ul class="navigation">
                 <li><a href="#about-me">About Me</a></li>
                 <li><a href="#work-samples">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#">Contact</a></li>
-            </ul>
+            </ul>-->
+                <div class="navigation" id="myNavigation">
+                    
+                    <a href="#about-me" onclick="myFunction()">About Me</a>
+                    <a href="#work-samples" onclick="myFunction()">Projects</a>
+                    <a href="#skills" onclick="myFunction()">Skills</a>
+                    <a href="#" onclick="myFunction()">Contact</a>
+                    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                    <a onclick="myFunction()"><span class="ix">&times;</span></a>
+                </div>
         </nav>
     </header>
     <main>

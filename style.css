@@ -15,7 +15,7 @@ body {
     font-size: 20px;
 }
 
-h1, h2, h3, li a {
+h1, h2, h3, /*li*/ a {
     font-family: 'Fraunces', serif;
 }
 
@@ -38,17 +38,16 @@ nav {
 .navigation {
     display:flex;
     justify-self: stretch;
+    overflow: hidden;
+    margin-top: 20px;
 }
 
-.navigation li {
-    display: inline-block;
-    padding: 0 20px;
-    align-self: center;
-}
-
-.navigation li a {
+.navigation a {
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    font-size: 1.5rem;
     text-decoration: none;
-    font-size: larger;
     font-weight: bold;
     color: whitesmoke;
 }
@@ -57,6 +56,28 @@ nav {
     text-decoration: none;
     color:  whitesmoke;
 }
+
+.navigation a:hover {
+    color: coral;
+}
+
+.navigation a.active {
+    background-color: coral;
+    color: white;
+}
+
+/*.navigation .icon {
+    display: none;
+}*/
+
+.ix {
+    font-size: 2.5rem;
+}
+
+a .ix:hover {
+    cursor:pointer;
+}
+
 
 nav,
 main {
@@ -185,20 +206,53 @@ footer {
         margin: auto 0px;
     }
 
-    ul {
+    /*navigation*/ 
+    .navigation {
         display: inline;
-        padding-left: 0px;
+        padding-left: 5px;
     }
 
-    .navigation li {
-        padding: 0 30px 0 0;
-        font-size: 0.90em;
+    h1 {
+        padding-left: 20px;
+    }
+
+    .navigation a {
+        display: none;
+        font-size: 1.75rem;
+    }
+
+    /*.navigation a:not(:first-child) {
+        display: none;
+    }*/
+
+    .navigation a.icon {
+        float: right;
+        display: block;
+        position:absolute;
+        right:20px;
+        top: 40px;
+    }
+
+    .navigation.responsive {
+        position: relative;
+    }
+    
+    .navigation.responsive a.icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .navigation.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
     }
 
     nav {
-        display: block;
+        display: inline;
         padding: 0px 20px;
-        text-align: center;
+        /*text-align: center;*/
     }
 
     .skill-container {
@@ -219,5 +273,13 @@ footer {
     
     .profile:hover {
         animation: photozoom 1.5s ease-in 0.3s forwards;
+    }
+
+    .navigation .icon {
+        display: none;
+    }
+
+    a .ix {
+        display: none;
     }
 }

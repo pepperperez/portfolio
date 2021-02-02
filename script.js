@@ -95,3 +95,14 @@ window.onclick = function(event) {
         modal5.style.display = "none";
     }
 }
+
+/////////////////////
+//Responsive navigation
+function myFunction() {
+    var myNav = document.getElementById("myNavigation");
+    if (myNav.className === "navigation") {
+        myNav.className += " responsive";
+    } else {
+        myNav.className = "navigation";
+    }
+}
