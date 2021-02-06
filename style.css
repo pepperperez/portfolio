@@ -187,6 +187,25 @@ section {
     margin-bottom: 50px;
 }
 
+/*contact page*/
+div .icon {
+    margin: 0 20px;
+    text-shadow: #182848 1px 1px;
+}
+
+div .icon::after{
+    visibility: hidden;
+}
+
+div a {
+    text-decoration: none;
+    color: coral;
+}
+
+div a:visited {
+    color: coral;
+}
+
 /*Footer*/
 footer {
     margin-top: auto;
