@@ -214,7 +214,7 @@ footer {
 }
 
 /*Responsive*/
-@media only screen and (max-width: 1200px){
+@media only screen and (max-width: 1080px){
     .about-me-container {
         flex-direction: column;
         align-content: center;
@@ -274,13 +274,17 @@ footer {
         /*text-align: center;*/
     }
 
+    .bio {
+        align-self: center;
+    }
+
     .skill-container {
         grid-template: repeat(2, 70px)/repeat(5, 1fr);
         gap: 10px 20px;
     }
 }
 
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 1080px) {
     @keyframes photozoom {
         from {
             transform: scale(1);
