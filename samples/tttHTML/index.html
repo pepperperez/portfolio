@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./style.css" type="text/css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <title>Tic-Tac-Toe</title>
+</head>
+<body>
+    <main>
+        <h1>Tic-Tac-Toe</h1>
+        <h2>What is Tic-Tac-Toe?</h2>
+        <p>Tic-Tac-Toe is a two-person game, played on a 3X3 board. The objective of the game is to complete a sequence of identical symbols, while at the same time blocking the opponent from doing so. Such sequence can be a row, a line or a diagonal.</p>
+        <figure>
+            <img src="./Figure1.png" alt="tic-tac-toe mid-game example">
+            <figcaption>Figure 1 – An example of a Tic-Tac-Toe board mid-game</figcaption>
+        </figure>
+        
+        <h2>How to play?</h2>
+        <p>The first person to start the game can choose between <span>&#10006;</span> or <span style="font-weight: bold;">&#11096;</span>. In the example below, the first player chooses <span>&#10006;</span>.</p>
+        <ol>
+            <li>
+                <p>The first player marks any of the nine slots with <span>&#10006;</span>. <br>
+                Their opponent will be assigned the
+                <span style="font-weight: bold;">&#11096;</span> symbol.</p>
+            </li>
+            <li>
+                <p>Once the second player marks their slot, it’s the first player’s turn to mark the next free slot.</p>
+                <div class="note">
+                    <p>Remember! The goal is to be the first to complete a line, a row, or a diagonal of the same symbol.</p>
+                </div>
+                <p>Each player will mark their next slot, trying to block their opponent’s sequence and to complete their own.</p>
+            </li>
+            <li>
+                <p>For each turn, try and see a pattern in the other player’s marked slots. Block your opponent by selecting the slot that would have helped them complete their sequence.</p>
+                <ol class="sub-roman">
+                    <li>
+                        <p>If the other player fails to block you, mark your next slot to complete your sequence.</p>
+                    </li>
+                </ol>
+                    <figure>
+                        <img src="./Figure2.png"/>
+                        <figcaption>Figure 2 – X wins the game with a diagonal sequence</figcaption>
+                    </figure>
+                <ol class="sub-roman">
+                    <li value="2">If the other player blocked you, select a slot that would lead to a different sequence.</li>
+                </ol>
+            </li>
+            <li>
+                <p>The game is completed when either of the players manages to complete a sequence, or after reaching a stalemate where no sequences can be completed.</p>
+                <figure>
+                    <img src="./Figure3.png"/>
+                    <figcaption>Figure 3 – A stalemate</figcaption>
+                </figure>
+            </li>
+        </ol>
+    </main>
+    <footer><h6><span>&#10024;</span> Created by Yael Perez 2021, for personal purposes only.</h6></footer>
+</body>
+</html>

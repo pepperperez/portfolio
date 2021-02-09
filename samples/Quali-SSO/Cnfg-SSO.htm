@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="description" content="" />
+        <meta name="author" content="" /><title>Configuring Single Sign-On (SSO)</title>
+        <link rel="shortcut icon" href="../Images/favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="./style.css"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="foundation-wrap">
+            <div class="off-canvas-wrap" data-offcanvas="">
+                    <section class="main-section">
+                        <div class="row outer-row" data-mc-content-body="True">
+                            <div class="qs-version-container">
+                                <p><span class="VariablesProductVersion">CloudShell Version: 8.1 GA</span>
+                                </p>
+                                <p><span class="VariablesHelpFilesVersion">Help Version: 2.0</span>
+                                </p>
+                                <p><a href="http://help.quali.com/help%20versions/All%20Versions%20Help/Content/Versions.htm" style="color: #ffffff; text-decoration: underline;" target="_blank">View / Download All Help Versions</a>
+                                </p>
+                            </div>
+                            <div id="contentBody" class="off-canvas-main QualiTopicContent">
+                                <h1>Configuring Single Sign-On (SSO)</h1>
+                                <p>In this article:&#160;</p>
+                                <ul class="_related-links-list">
+                                    <li value="1"><a href="#SSO" class="MCXref xref selected">SSO Overview </a>
+                                    </li>
+                                    <li value="2"><a href="#Configur" class="MCXref xref selected">Configuring SAML&#160;Single Sign-On (SSO)</a>
+                                    </li>
+                                    <li value="3"><a href="#Enabling" class="MCXref xref selected">Enabling direct access to CloudShell Portal</a>
+                                    </li>
+                                    <li value="4"><a href="#Disablin" class="MCXref xref selected">Disabling SSO</a>
+                                    </li>
+                                </ul>
+                                <h2><a name="SSO"></a>SSO Overview </h2>
+                                <p>Single sign-on is an access control and authentication method that enables you to access several services through a single login page, prompting you to enter you credentials only once. You can use SSO to enable your users to access CloudShell through your homepage.</p>
+                                <p>Single sign on to the CloudShell Portal is done using SAML mode. This mode relies on a third-party identity provider (IdP) for authentication and authorization, using Security Assertion Markup Language (SAML). For more information, see <a href="#Configur" class="MCXref xref selected">Configuring SAML&#160;Single Sign-On (SSO)</a>.</p>
+                                <p>SAML&#160;SSO for CloudShell is implemented through Kentor Authentication services, an open-source library that adds SAML2 support to ASP.NET and IIS websites, integrating with various identity providers. </p>
+                                <h2><a name="Configur"></a>Configuring SAML&#160;Single Sign-On (SSO)</h2>
+                                <p>You can configure Security Assertion Markup Language (SAML) single sign-on (SSO) to allow secure web domains to exchange user authentication and authorization data (such as username and password). Using SAML, an online Service Provider (SP) can contact a separate online Identity Provider (IdP) to authenticate users who are trying to access secure content.</p>
+                                <p>The following figure shows the typical use case addressed by SAML, where the principal (user) requests a service from the Service Provider. The Service Provider requests and obtains an identity assertion from the Identity Provider. On the basis of this assertion, the Service Provider can make an access control decision, in other words it can decide whether to perform some service for the connected principal (user).</p>
+                                <p class="_note-block"><span class="_strong">Note:</span> CloudShell supports SAML v2.0. If you encounter an error, please contact your SAML administrator.</p>
+                                <p>
+                                    <img src="./SAML workflow.png" />
+                                </p>
+                                <p class="ToDo_print">To configure SAML SSO for CloudShell Portal:</p>
+                                <ol>
+                                    <li value="1"> <a href="#Setting" class="MCXref xref selected">Set up an Identity Provider (IdP)</a>.<p class="_note-block"><span class="_strong">Note</span>: When setting up and managing the Identity provider, make sure to configure the IdP to recognize CloudShell Portal as a service provider.</p></li>
+                                    <li value="2"><a href="#Installi" class="MCXref xref selected">Install a certificate on a local machine</a>.</li>
+                                    <li value="3"><a href="#Configur2" class="MCXref xref selected">Configure CloudShell to work with SAML SSO</a>.</li>
+                                </ol>
+                                <h3><a name="Setting"></a>Set up an Identity Provider (IdP)</h3>
+                                <p>When setting up an Identity Provider, make sure you do the following:</p>
+                                <ul>
+                                    <li value="1">Configure a SAML 2.0 app with the required users.
+            
+                <div class="_note-block"><p><span class="_strong">Note</span>:
+						When creating users in the IdP, the users must have the following attributes in order to be authenticated  (see this <a href="" target="_parent" title="Since this is an achived document, link is not available">sample</a> kentor.config example to see how they are used):</p><ul><li value="1"><code>userName</code>: with the user name;</li><li value="2"><code>emailAddress</code>: with the email address;</li><li value="3"><code>timezoneName</code>: with the values from the <span class="_strong">Time zone name</span> column in <a href="https://msdn.microsoft.com/en-us/library/gg154758.aspx">MSDN's Time Zone IDs</a>.</li><li value="4"><p><code>RelayState</code>: with the URL of the location to be directed to after sign-on.</p></li><li value="5">Plus any other attributes according to which users should be mapped into groups in the sso_group_rules.config.json file</li></ul></div></li>
+                                    <li value="2">
+                In the ACS URL field, add the following URL:&#160;<code>http://[server]/AuthServices/ACS</code><p>(The [Server] should be replaced with the address or name of the machine on which the CloudShell Portal client is installed.)</p></li>
+                                    <li value="3">Download the X.509 Certificate acquired from the IdP. Make sure the file type is <span class="_file-name">.cer</span>.</li>
+                                    <li value="4">Copy the Identity Provider Single Sign-On URL and save it for later. </li>
+                                    <li value="5">Copy the Issuer URL and save it for later.</li>
+                                </ul>
+                                <h3><a name="Installi"></a>Install a certificate on a local machine</h3>
+                                <p>While setting-up an IdP, you are required to download a certificate file used for communication with the IdP. For increased security, install certificates on your local machine.</p>
+                                <p class="ToDo_print">To install a certificate:</p>
+                                <ol>
+                                    <li value="1">After downloading the <span class="_file-name">.cer</span> file to your local directory, double-click to open it.</li>
+                                    <li value="2">In the <span class="_strong">Security Warning</span> window, click <span class="_strong">Open</span>.</li>
+                                    <li value="3">In the <span class="_strong">Certificates </span>window, click <span class="_strong">Install Certificate</span>. 
+                                        <p>The <span class="_strong">Certificates Import Wizard </span>displays.</p>
+                                    </li>
+                                    <li value="4">In the <span class="_strong">Store Location </span>section, select <span class="_strong">Local Machine</span> and click <span class="_strong">Next</span>.</li>
+                                    <li value="5">Select the certificate store in which you want to install your certificate, and click <span class="_strong">Next</span>.</li>
+                                    <li value="6">Click <span class="_strong">Finish </span>to import the certificate.</li>
+                                </ol>
+                                <h3><a name="Configur2"></a>Configure CloudShell to work with SAML SSO</h3>
+                                <p>Configuration includes defining user groups and enabling the use of SAML SSO in CloudShell.</p>
+                                <p>Users created in the IdP can use their defined <span class="_strong">User Name</span> and <span class="_strong">Email</span> attributes to log in to CloudShell Portal. If they are not pre-existing CloudShell users, they are automatically mapped to a group in CloudShell, according to the group rules defined in a dedicated <span class="_file-name">sso_group_rules.config.json</span> file.</p>
+                                <p class="_note-block"><span class="_strong">Note</span>: Make sure the required user groups already exist in CloudShell and are added to a domain.</p>
+                                <p>For information about creating users, see <a href="" class="MCXref xref" title="Since this is an achived document, link is not available">Adding CloudShell Users</a>.</p>
+                                <p class="ToDo_print">To define user groups for SAML SSO:</p>
+                                <ol>
+                                    <li value="1">Create a JSON&#160;file with the groups and their constraints per your needs, and save it under the name <span class="_file-name">sso_group_rules.config.json</span> in the root folder of the CloudShell Portal installation directory.</li>
+                                    <li value="2">Alternatively, you can download the <a href="" title="Since this is an achived document, link is not available">sample JSON file</a> and use it as a template for the construction of a static predefined group. 
+        Users are associated to a group if their attributes match all the constraints defined for that group. Users can be associated to more than one group.<br /></li>
+        <p style="background-color: #ffffff;">Optionally, you can use regular expressions in the <span class="_file-name">sso_group_rules.config.json</span> file you created to define dynamic groups that are conditioned by the values of the SAML parameters. Once regular expressions are enabled, with the <code>EnableRegex</code> element, the constraints' values are recognized as regular expressions.</p>
+        <p style="background-color: #ffffff;">The following code sample shows a group defined using regular expressions:</p>
+        <table style="margin-left: 0; margin-right: auto;">
+            <col style="width: 560px;" />
+            <tbody>
+                <tr>
+                    <td style="background-color: #f5f2f0;">
+                        <p><code>{</code></p>
+                        <p class="indented0_print"><code>"Groups": [</code></p>
+                        <p class="indented1_print"><code>   {</code></p>
+                        <p class="indented2_print"><code>       "EnableRegex": true,</code></p>
+                        <p class="indented2_print"><code>       "GroupName": "{group_name}",</code></p>
+                        <p class="indented2_print"><code>       "Constraints": [</code></p>
+                        <p class="indented3_print"><code>           {</code></p>
+                        <p class="indented4_print"><code>               "Attribute": "TargetGroup",</code></p>
+                        <p class="indented4_print"><code>               "Value": "^(?&lt;group_name&gt;.*)$"</code></p>
+                        <p class="indented3_print"><code>           }</code></p>
+                        <p class="indented3_print"><code>           {</code></p>
+                        <p class="indented4_print"><code>               "Attribute": "Location",</code></p>
+                        <p class="indented4_print"><code>               "Value": "*"</code></p>
+                        <p class="indented3_print"><code>           }</code></p>
+                        <p class="indented2_print"><code>       ]</code></p>
+                        <p class="indented1_print"><code>   }</code></p>
+                        <p class="indented0_print"><code>]</code></p>
+                        <p><code>}</code></p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="_note-block"><span class="_strong">Note</span>: The asterisk in <code>Value="*"</code> is recognized as a regular expression, even if regular expressions are not enabled. </p></li>
+                                    <li value="3">Save your JSON file under the name <span class="_file-name">sso_group_rules.config.json</span> (make sure the name is an exact match).</li>
+                                </ol>
+                                <p class="ToDo_print">To enable SAML&#160;SSO:</p>
+                                <ol>
+                                    <li value="1">
+                    Go to the <span class="_file-name">C:\Program Files (x86)\QualiSystems\CloudShell\Server\customer.config</span> file, and add the following key:
+                    <p><code>&lt;add key="Authentication.ExternalLoginMode" value="Header" /&gt;</code></p></li>
+                                    <li value="2">
+                    Go to the <span class="_file-name">C:\Program Files (x86)\QualiSystems\CloudShell\Portal\customer.config</span> file, add the following keys and set the required values:
+                    <ul><li value="1"><code>&lt;add key="CustomAbsoluteLoginPage" value="http://[server]/AuthServices/SignIn"/&gt;</code> (Used to redirect the user to a specified URL whenever the user browses the CloudShell Portal's login page. The [Server] should be replaced with the address or name of the machine on which the CloudShell Portal client is installed.)</li><li value="2"><code>&lt;add key="CustomAbsoluteLogoutPage" value="http://[server]/AuthServices/Logout"/&gt;</code> ([server] is the IdP server's IP or DNS. Used to redirect users after logging out of CloudShell Portal.)</li></ul></li>
+                                    <li value="3">
+                Add the <span class="_file-name">kentor.config</span> file, based on the following <a href="" title="Since this is an achived document, link is not available">sample</a>, to the <span class="_file-name">C:\Program Files (x86)\QualiSystems\CloudShell\Portal</span> folder.
+</li>
+                                    <p>The <span class="_file-name">kentor.config</span> file contains all the Authentication requirements, for example, the location of the certificate store and requested attributes for the IdP response. <br/></p>
+                                    <h4><a name="Sample"></a>Sample file requirements</h4>
+                                    <div class="MCDropDown MCDropDown_Open dropDown">
+                                        <div class="MCDropDownBody dropDownBody">
+                                            <p><code class="_strong">&lt;kentor.authServices&gt;</code>
+                                            </p>
+                                            <p>
+                                                <table style="width: 100%; margin-left: 0; margin-right: auto;">
+                                                    <col style="width: 200px;" />
+                                                    <col />
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><code>entityId</code>
+                                                            </td>
+                                                            <td>
+                                                                <p>The name the service provider will use for itself when sending messages. In this case, it is the CloudShell Portal location on your local machine with the addition of <code>/AuthServices</code>.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><code>returnUrl</code>
+                                                            </td>
+                                                            <td>
+                                                                <p>The URL that you want users to be redirected to once the authentication is complete. This is typically the start page of the application, or a special signed in start page.</p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </p>
+                                            <p>
+                                                <p><code class="_strong">&lt;metadata&gt;</code>
+                                                </p>
+                                            </p>
+                                            <p>
+                                                <table style="width: 100%;">
+                                                    <col style="width: 200px;" />
+                                                    <col />
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><code>requestedAttributes</code>
+                                                            </td>
+                                                            <td>
+                                                                <p>List of attributes to be included in the assertions generated by the identity provider. The <code>friendlyName</code> attribute value should never be changed, but the <code>name</code> attribute value for each <code>requestedAttribute</code> can be changed according to your SAML response.</p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </p>
+                                            <p>
+                                                <p><code class="_strong">&lt;identityProviders&gt;</code>
+                                                </p>
+                                            </p>
+                                            <p>
+                                                <table style="width: 100%;">
+                                                    <col style="width: 200px;" />
+                                                    <col />
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><code>entityId</code>
+                                                            </td>
+                                                            <td>
+                                                                <p>The name that the IdP will use for itself when sending responses. Here you must enter the Issuer URL you retrieved from the IdP.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><code>signOnUrl</code>
+                                                            </td>
+                                                            <td>The URL to the sign-in page of the IdP, to which CloudShell Portal will redirect users in order to sign in.</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><code>allowUnsolicitedAuthnResponse</code>
+                                                            </td>
+                                                            <td>This enables the IdP to initiate sign on where there was no prior authentication request.</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><code>binding</code>
+                                                            </td>
+                                                            <td>The binding that the services provider should use when sending requests to the identity provider. </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </p>
+                                            <p>
+                                                <p><code class="_strong">&lt;signingCertificate&gt;</code>
+                                                </p>
+                                            </p>
+                                            <p>
+                                                <table style="width: 100%;">
+                                                    <col style="width: 200px;" />
+                                                    <col />
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><code>storeLocation</code>
+                                                            </td>
+                                                            <td>The location of the certificate store to search for the certificate you installed.</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><code>storeName</code>
+                                                            </td>
+                                                            <td>
+                                                                <p>Name of the certificate store to search for the certificate.</p>
+                                                                <p class="_note-block"><b>Note</b>: If you stored the certificate in the Personal store, enter "My" as value. For more information see MSDN's <a href="https://msdn.microsoft.com/en-us/library/system.security.cryptography.x509certificates.storename(v=vs.110).aspx">StoreName Enumeration</a> page.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><code>findValue</code>
+                                                            </td>
+                                                            <td>A search term to use to find the certificate. The value will be searched for in the field specified by the <code>x509FindType</code> attribute. The required information can be found in the installed certificate details in the certificate store.</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><code>x509FindType</code>
+                                                            </td>
+                                                            <td>The field according to which the certificate will be searched, as defined by the value in the <code>findValue</code> attribute. You can find more information about this in MSDN's <a href="https://msdn.microsoft.com/en-us/library/system.security.cryptography.x509certificates.x509findtype.aspx">X509FindType Enumeration</a> page.</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </p>
+                                            <div class="_note-block"><span class="_strong">Notes:</span>
+                                                <ul>
+                                                    <li value="1">The sample file shows only the minimum requirements.</li>
+                                                    <li value="2">You may also save the certificate file and use the key <code>&lt;signingCertificate fileName="~/App_Data/Kentor.AuthServices.StubIdp.cer" /&gt;</code> with your certificate file path.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <li value="4">
+                                    Edit the file according to the additional information required by your IdP.
+                                    <p>For more details on the file and its elements, see the <a href="https://github.com/KentorIT/authservices/blob/master/docs/Configuration.md">Kentor AuthServices Configuration documentation</a>. </p>
+                                    </li>
+                                    <li value="5">Restart <span class="_strong">Quali Server</span> and <span class="_strong">CloudShell Portal IIS</span> services.</li>
+                                    <li value="6">Open your browser and navigate to your portal.
+                                    <p>You are redirected to the IdP’s login page instead of CloudShell Portal.</p><p class="_note-block"><span class="_strong">Note</span>: When trying to access the login page, if you receive a "Missing BASE64 Value" error message, make sure you have configured all the required application details correctly in the IdP.</p></li>
+                                    <li value="7">
+                                    Enter the user name and password you gave the user via the IdP, and you will be referred directly to the Portal's home.
+                                    </li>
+                                </ol>
+                                <p class="_tip"><span class="_strong">Tip</span>: You can use the SSO Tester utility to test your SSO configuration. For additional information, see <a href="./SSO-Tstr.htm" class="MCXref xref">SSO Tester</a>.</p>
+                                <h2><a name="Enabling"></a>Enabling direct access to CloudShell Portal</h2>
+                                <p>Users with CloudShell credentials can access CloudShell Portal directly, not via the SSO login page. By default this is disabled.</p>
+                                <p class="ToDo_print">To enable direct access to CloudShell Portal:</p>
+                                <ol>
+                                    <li value="1">
+                Go to the <span class="_file-name">C:\Program Files (x86)\QualiSystems\CloudShell\Portal\customer.config</span> file, and add the following key:
+                <p><code>&lt;add key="BypassCustomLogin" value="true"/&gt;</code></p></li>
+                                    <li value="2">
+                                        <p>Restart the <span class="_strong">CloudShell Portal IIS </span>service.</p>
+                                    </li>
+                                    <li value="3">Log in to CloudShell Portal using this URL format: <span class="_strong">https://&lt;CloudShell Portal&gt;/Account/Login?nocustom=nocustom</span>.
+            <p>For example: "https://192.173.45.80/Account/Login?nocustom=nocustom"</p><p>You are directed to the CloudShell Portal login page.</p></li>
+                                </ol>
+                                <h2><a name="Disablin"></a>Disabling SSO</h2>
+                                <p class="ToDo_print">To disable SSO:</p>
+                                <ol>
+                                    <li value="1">Go to the <span class="_file-name">C:\Program Files (x86)\QualiSystems\CloudShell\Portal\customer.config</span> file, and take out the following key:
+				<p><code>&lt;add key="CustomAbsoluteLoginPage" value="http://[server]/AuthServices/SignIn"/&gt;</code></p></li>
+                                    <li value="2">Restart the <span class="_strong">CloudShell Portal IIS </span>service.</li>
+                                </ol>
+                            </div>
+                            <div class="sideContent">
+                                <!--<ul class="menu _Skins_SideMenu mc-component">
+                                    <li class="has-children"><a href="Cnfg-SSO-Ovrw.htm">Single Sign-On (SSO) Configuration</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="#" class="selected">Configuring Single Sign-On (SSO)</a>
+                                            </li>
+                                            <li><a href="./SSO-Tstr.htm">SSO Tester</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>-->
+                            </div>
+                            <div class="footer center">
+                                <p class="Copyright">Copyright © 2016 <span class="VariablesCompanyName">Quali</span></p>
+                            </div>
+                                <button class="qs-btn-round qs-btn-scroll-top tooltip" title="Scroll to top">
+                                </button>
+                            </div>
+                            <script src="../Resources/Scripts/prism.js">
+                            </script>
+                            <script src="../Resources/Scripts/jquery.tooltipster.min.js">
+                            </script>
+                            <script src="../Resources/Scripts/perfect-scrollbar.jquery.js">
+                            </script>
+                            <script src="../Resources/Scripts/QsScript.js">
+                            </script>
+                        </div>
+                    </section><a class="exit-off-canvas"></a>
+                </section>
+            </div>
+            <script>/* <![CDATA[ */$(document).foundation();/* ]]> */</script>
+        </div>
+    </body>
+</html>

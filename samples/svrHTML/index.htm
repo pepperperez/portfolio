@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <title>SOAP vs. REST</title>
+</head>
+<body>
+    <main>
+        <h1>SOAP vs. REST</h1>
+        <p>When building a web-based application, you are required to set up some mutually agreed-upon rules for communication that will enable your application to exchange information with other applications. For example, a website selling a product online will use these rules to have its server communicate with credit card companies and possibly payment processors such as PayPal, to verify the means of payment and receive details about the funds transferred through them. </p>
+        <p>The two most common tools for implementing these rules are SOAP and REST.</p>
+        <section>
+            <h2>What is SOAP?</h2>
+            <p>SOAP stands for <b>S</b>imple <b>O</b>bject <b>A</b>ccess <b>P</b>rotocol. It is a messaging protocol that uses structured XML-format messages to exchange information between applications. </p>
+            <p>There are two main rules for using SOAP, dictated by the <a href="https://www.w3.org/">World Wide Web Consortium (W3C):</a></p>
+            <ol>
+                <li>All the information exchange must be in an XML format and must be used by both applications.</li>
+                <li>The XML must be structured in a very certain way, which consists of an envelope that contains an optional header and a message body:</li>
+            </ol>
+            <div class="illustration">
+                <div class="xml-scheme">
+                    <pre><code>
+                        &#60;soap:Envelope&#62;
+                            &#60;soap:Header&#62;...&#60;/soap:Header&#62;
+                            &#60;soap:Body&#62;
+                                ...
+                            &#60;/soap:Body&#62;
+                        &#60;soap:Envelope&#62;
+                    </code></pre>
+                </div>
+                <div class="visualization">
+                    <div class="soap-envelope">
+                        <p>Envelope</p>
+                        <div class="soap-header">Header</div>
+                        <div class="soap-body">Body</div>
+                    </div>
+                </div>
+                
+            </div>
+            <ul>
+                <li>The envelope contains information about the encoding and attributes required for the message. </li>
+                <li>The header might contain attributes about the way the message should be processed and authentication information, such as username and password.</li>
+                <li>The body contains the actual request and response messages. It may also contain a “Fault” element that includes information about error handling.</li>
+            </ul>
+            
+            <h3>The pros and cons of SOAP</h3>
+            <p>SOAP makes use of inherent extensibility and logic features, as well as implementing its own security measure – WS-Security. This makes SOAP a good solution for large corporations.</p>
+            <p>However, the use the of tag heavy XML envelopes slows down the request and response processing time and consumes bandwidth, especially when there is a heavy traffic of requests. In addition, the rigid scheme of the protocol slows down adoption and implementation, as both client and server must use the SOAP message structure. </p>
+        </section>
+        <section>
+            <h2>What is REST?</h2>
+            <p>REST stands for <b>RE</b>presentational <b>S</b>tate <b>T</b>ransfer. It is an architecture style which is implemented while designing a web application.</p>
+            <p>There are five constrains that define a RESTful architecture:</p>
+            <ol class="rest">
+                <li><span>Uniform interface</span> – every element or piece of data can be a resource, that has its own uniform resource identifier (URI). There is no strict guideline for a resource can be. REST makes explicit use of HTTP methods to create, read, update or delete these resources, using their unique identifier. </li>
+                <li><span>Statelessness</span> – the server does not maintain a record of the state of the system. Each request is independent of any previous requests and must contain all the data required for handling.</li>
+                <li><span>Caching</span> – the data within the response must be labeled as either cacheable or non-cacheable and can be stored locally by the client. </li>
+                <li><span>Layering </span>– REST enables HTTP intermediaries to exist between the client and the server, that can be used for message translation, caching, or serving as proxy servers or gateways.</li>
+                <li><span>Code-on-demand</span> – This is optional. The response can include a script that runs on the client-side.</li>
+            </ol>
+            <h3>The pros and cons of REST</h3>
+            <p>REST is an open architecture that enables any message format to be used. Its caching constraint improves performance by reducing the number of requests for duplicate resource. The statelessness and layering constraints improve performance and scalability since there every message is self-contained, and the layers enable to control the traffic of requests and responses between the client and the server.</p>
+            <p>However, REST doesn’t provide the same level of security a large corporation might need. In addition, REST’s statelessness constraint dictates that the request should include information that is possibly redundant. This might consume bandwidth and create latency in the delivery of messages.</p>
+        </section>
+        <h2>In conclusion</h2>
+        <p>Public opinion today favors REST as a solution, as it is easy to use and language agnostic. On the other hand, if you require added security and a retry logic to error-handling, SOAP might be a good solution for you.</p>
+    </main>
+    <footer><h6><span>&#10024;</span> Created by Yael Perez 2021, for personal purposes only.</h6></footer>
+</body>
+</html>

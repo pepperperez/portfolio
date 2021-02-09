@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="QualiUserManagementTopic _Skins_HTML5___Top_Navigation" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-has-content-body="True" data-mc-conditions="Default.Authoring-Only,Default.ResourceManager-Only,Default.Studio-Only,Default.Portal-Only,Default.CloudEdition-Exclude" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="description" content="" />
+        <meta name="author" content="" /><title>SSO Tester</title>
+        <link rel="shortcut icon" href="../Images/favicon.ico" type="image/x-icon" />
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+        <link href="./style.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="foundation-wrap">
+            <div class="off-canvas-wrap" data-offcanvas="">
+                    <section class="main-section">
+                        <div class="row outer-row" data-mc-content-body="True">
+                            <div class="qs-version-container">
+                                <p><span class="VariablesProductVersion">CloudShell Version: 8.1 GA</span>
+                                </p>
+                                <p><span class="VariablesHelpFilesVersion">Help Version: 2.0</span>
+                                </p>
+                                <p><a href="http://help.quali.com/help%20versions/All%20Versions%20Help/Content/Versions.htm" style="color: #ffffff; text-decoration: underline;" target="_blank">View / Download All Help Versions</a>
+                                </p>
+                            </div>
+                            <div id="contentBody" class="off-canvas-main QualiTopicContent">
+                                <h1>SSO Tester</h1>
+                                <p>The SSO Tester utility allows you to test the Kentor configuration on a system with predefined SSO without the need to install the full CloudShell Portal version. The SSO Tester utility is used to ensure that the SSO implementation works with your IdP and local configurations. It is recommended to use the SSO Tester utility on your staging environment before implementing CloudShell with Kentor SSO in your production environment.</p>
+                                <h2>Prerequisites</h2>
+                                <p>Before using the SSO Tester utility, make sure to:<ol><li value="1"><a href="#Installi" class="MCXref xref selected">Install the SSO Tester utility</a></li><li value="2"><a href="#Create" class="MCXref xref selected">Create a new website in IIS Manager</a></li><li value="3"><a href="./Cnfg-SSO.htm#Configur2" class="MCXref xref">Configure CloudShell to work with SAML SSO</a></li></ol></p>
+                                <p class="_note-block"><span class="_strong">Note</span>: Make sure you have IIS installed on your machine. The SSO Tester utility does not work on machines on which the default IIS Express is installed.</p>
+                                <h3><a name="Installi"></a>Install the SSO Tester utility</h3>
+                                <p>The SSO Tester package includes a web application that tests SSO integration with the CloudShell Portal. </p>
+                                <p class="ToDo_print">To install the SSO Tester utility:</p>
+                                <ol>
+                                    <li value="1">Download the <a href="" title="Since this is an achived document, link is not available">SSO Tester</a> package file.</li>
+                                    <li value="2">Extract the contents of the compressed archive to your local directory.</li>
+                                </ol>
+                                <h3><a name="Create"></a>Create a new website in IIS Manager</h3>
+                                <p class="ToDo_print">To create a new website in IIS Manager:</p>
+                                <ol>
+                                    <li value="1">
+                                        <p>Open IIS Manager.</p>
+                                    </li>
+                                    <li value="2">
+                                        <p>In the <span class="_strong">Connections</span> pane, right-click <span class="_strong">Sites</span>.</p>
+                                        <p>
+                                            <img src="./SSO_Check for CloudShell required_1.png" style="visibility: visible;border-top-width: 1pt;border-bottom-width: 1pt;border-left-width: 1pt;border-right-width: 1pt;" />
+                                        </p>
+                                    </li>
+                                    <li value="3">
+                                        <p>Select <span class="_strong">Add Website</span>.</p>
+                                        <p>
+                                            <img src="./SSO_Check for CloudShell required_2_559x541.png" style="visibility: visible;width: 559;height: 541;" />
+                                        </p>
+                                    </li>
+                                    <li value="4">In the <span class="_strong">Site name</span> field, specify a name for the site.</li>
+                                    <li value="5">In the <span class="_strong">Content Directory</span> field, specify a <span class="_strong">Physical Path</span>, pointing to the <span class="_file-name">Portal</span> folder that resides in the previously extracted SSO Tester.</li>
+                                    <li value="6">In the <span class="_strong">Binding</span> field, specify an available port and click <span class="_strong">OK</span>.
+                <p><img src="./SSO_Check for CloudShell required_3.png" style="visibility: visible;border-top-width: 1pt;border-bottom-width: 1pt;border-left-width: 1pt;border-right-width: 1pt;" /></p></li>
+                                    <li value="7">
+                                        <p>In the <span class="_strong">Connections</span> pane, click <span class="_strong">Application Pools</span>.</p>
+                                    </li>
+                                    <li value="8">In the <span class="_strong">Application Pools</span> window, double-click your new website.
+                <p><img src="./SSO_Check for CloudShell required_4.png" style="visibility: visible;border-top-width: 1pt;border-bottom-width: 1pt;border-left-width: 1pt;border-right-width: 1pt;" /></p></li>
+                                    <li value="9">In the <span class="_strong">Edit Application Pool</span> window, edit the application pool that was created for your website. </li>
+                                    <li value="10">Verify that the <span class="_strong">.NET CLR version</span> is <span class="_strong">4.0.*</span>.</li>
+                                    <li value="11">Select the <span class="_strong">Start application pool immediately</span> checkbox, and click <span class="_strong">OK</span>.</li>
+                                    <li value="12">In the <span class="_strong">Connections</span> pane, click your website, then in the <span class="_strong">Actions</span> pane, under <span class="_strong">Manage Website</span>, click <span class="_strong">Restart</span>.</li>
+                                    <li value="13">If you are using IIS 8 with Windows Server 2012 or Windows Server 2012 R2, make sure to install the 'Web Server' role within the server manager. </li>
+                                    <li value="14">
+                                        <p>After selecting the web server role, click <span class="_strong">Next</span> and in the <span class="_strong">Role Services</span> section, under <span class="_strong">Application Development</span>, select <span class="_strong">ASP.NET 4.5</span>. </p>
+                                        <p>This sub-role enables IIS to use the ASP.NET 4.5 for running the CloudShell Portal.</p>
+                                    </li>
+                                </ol>
+                                <h2>Using the SSO Tester utility</h2>
+                                <p class="ToDo_print">To use the SSO Tester utility:</p>
+                                <ol>
+                                    <li value="1">Browse to the location to which you extracted the tester. Open the <span class="_file-name">customer.config </span>file, and add the URL of the newly created website to the following key:<p><code>&lt;add key="CustomAbsoluteLoginPage" value="http://[server]/AuthServices/SignIn" /&gt;</code></p></li>
+                                    <li value="2">In the same folder, open the <span class="_file-name">kentor.config</span> file, and add the URL of the newly created website as the value of both the <code>entityId</code> and <code>returnUrl</code> attributes of the following key:<p><code>&lt;kentor.authServices entityId="http://CloudShellPortalURL/AuthServices"</code></p><p><code>returnUrl="http://CloudShellPortalURL/"&gt;</code></p></li>
+                                    <li value="3">Edit the <span class="_file-name">kentor.config</span> file, according to the requirements described in <a href="Cnfg-SSO.htm#Sample" class="MCXref xref">Sample file requirements</a>.</li>
+                                    <li value="4">Open the CloudShell Portal.<p>You are redirected to the IdP login page. </p></li>
+                                    <li value="5">Log in with the credentials of one of the users you defined in the IdP.
+                                        <p>A test page with the attributes returned by the IdP is displayed. </p></li>
+                                    <li value="6">
+                If errors are displayed, make the required changes and reload the website.
+				<p><ul class="_note-block"><span class="_strong">Notes</span>:
+			<li style="margin-left: 18px;text-align: left;" value="2">if error message HTTP Error 500.19 is issued, change the permissions of the SSO Tester's Portal folder and reload the website.</li><li style="margin-left: 18px;text-align: left;" value="3">If changes were made to the <span class="_file-name">kentor.config </span>file, reset the application in the IIS Manager.<p><img src="./SSO_Restart IIS.png" /></p></li></ul></p></li>
+                                </ol>
+                            </div>
+                            <div class="sideContent">
+                                <!--<ul class="menu _Skins_SideMenu mc-component">
+                                    <li class="has-children"><a href="Cnfg-SSO-Ovrw.htm">Single Sign-On (SSO) Configuration</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="Cnfg-SSO.htm">Configuring Single Sign-On (SSO)</a>
+                                            </li>
+                                            <li><a href="#" class="selected">SSO Tester</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>-->
+                            </div>
+                            <div class="footer center">
+                                <p class="Copyright">Copyright © 2016 <span class="VariablesCompanyName">Quali</span></p>
+                            </div>
+                            <div class="qs-control-container"><a href="http://help.quali.com/feedback" target="_blank" class="qs-btn-round qs-btn-mail tooltip" title="Send feedback"></a>
+                                <button class="qs-btn-round qs-btn-scroll-top tooltip" title="Scroll to top">
+                                </button>
+                            </div>
+                        
+                    </section><a class="exit-off-canvas"></a>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,84 @@
+html {
+    font-family: 'Roboto', sans-serif;
+}
+
+li {
+    line-height: 1.2rem;
+    margin-bottom: 15px;
+}
+
+main {
+    max-width: 70%;
+    margin: 50px 15%;
+}
+
+h1 {
+    color: hsl(218, 100%, 70%);
+
+}
+
+h2 {
+    color: hsl(218, 52%, 50%);
+}
+
+h3 {
+    color: hsl(218, 60%, 35%);
+    margin-top: 20px;
+}
+
+.illustration {
+    max-width: 50%;
+}
+
+.soap-envelope {
+    border:hsl(218, 60%, 35%) solid 0.5px;
+    background-color: hsl(218, 52%, 50%);
+    color: white;
+    border-radius: 15px;
+    max-width: 50%;
+    margin-left: 50px;
+}
+
+.soap-envelope p {
+    margin-left: 15%;
+    font-weight: 500;
+}
+
+.soap-body, .soap-header {
+    color: hsl(218, 60%, 20%);
+    border-radius: 15px;
+    max-width: 80%;
+    text-align: center;
+    font-weight: 500;
+    margin: 20px auto 10px auto;
+}
+
+.soap-header {
+    border: hsl(218, 100%, 70%) solid 0.5px;
+    background-color: hsl(218, 100%, 80%);
+    height: 30px;
+}
+
+.soap-body {
+    border: hsl(218, 52%, 50%) solid 0.5px;
+    background-color: hsl(218, 52%, 80%);
+    height: 100px;
+}
+
+.xml-scheme {
+    display: inline;
+    max-width: 50%;
+    float: right;
+}
+
+code {
+    line-height: 24px;
+}
+
+.rest span {
+    text-decoration: underline solid;
+}
+
+footer span {
+    font-size: 20px;
+}

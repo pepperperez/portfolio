@@ -1,0 +1,48 @@
+html {
+    font-family: 'Roboto', sans-serif;
+}
+
+.sub-roman{
+    list-style-type: lower-roman;
+}
+
+.note {
+    border-top: 0.5px solid #4472C4;
+    border-bottom: #4472C4 0.5px solid;
+    color: #4472C4;
+    margin: 20px auto;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+span {
+    font-size: 20px;
+}
+
+li {
+    line-height: 1.2rem;
+    margin-bottom: 15px;
+}
+
+figure {
+    text-align: center;
+}
+
+figcaption {
+    font-size: 14px;
+    font-weight: 500;
+    color: #4472C4;
+}
+
+main {
+    max-width: 70%;
+    margin: 50px 15%;
+}
+
+h1 {
+    color: hsl(218, 100%, 70%);
+}
+
+h2 {
+    color: #4472C4;
+}
